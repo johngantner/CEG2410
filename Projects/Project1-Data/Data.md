@@ -32,8 +32,17 @@ When wondering "How much should I write?"  This document should be explanatory e
 - Choice of RAID configuration & justification
     - justification should hit points of read / write speeds & disk recovery in case of hard failure
     - Warning: RAID 0 & RAID 1 have nearly no justification outside of consumer (non-enterprise / business) use
+
+      *  I chose RAID 6 for my project because it provides reliability, which is crucial for educational data. Additionally, it offers adjustability for growing storage needs. RAID 6 is cost-effective and aligns well with compliance standards. While RAID 6 may have slightly lower write performance, its read speeds remain competitive. Overall, RAID 6 provides a great balance between performance and data protection, making it an excellent choice for educational environments.
+        
 - How to configure, mount, and automatically mount RAID
+
+  * First you'd want to install mdadm. After that create the RAID array, then format the array. To mount the RAID you would create a mount point and then mount the array. To automatically mount the RAID you would first find the RAID UUID, add an entry to /etc/fstab, and then add a line with your raid uuid. After that youd want to save and exit the editor.
+    
 - Method to recover RAID in case of failure
+
+  * First youd want to identify the failed drive. Next step would be to replace the drive and ensure that the replacement drive is at least the same size or larger than the failed drive. Afterwards, youd partition the new drive. Lastly, you would want to add the new drive to the RAID array.
+     
 - Screenshot with RAID status & proof of mount
 
 ## Part 2 - Service Configuration
